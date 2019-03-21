@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Qr Code Generator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h1>Ceng 495 HomeWork1 -- Best Qr_Code_Reader EVER!!!</h1>
+	<input type="text" name="qr_data" id="qr_data" placeholder="Create Qr Code">
+	<input type="button" name="qr_button" id="qr_button" onclick="qr_codecreator()" value="Create">
+	<br>
+	<br>
+	<label>Select The Color:</label>
+	 <select name="color" id="color">
+	    <option value="f00">Red</option>
+	    <option value="0f0">Green</option>
+	    <option value="00f">Blue</option>
+	    <option value="000">Black</option>
+	    <option value="fff">White</option>
+	  </select> 
+	<br>
+
+	<label>Select The Background:</label>
+	<select name="bgcolor" id="bgcolor">
+	    <option value="f00">Red</option>
+	    <option value="0f0">Green</option>
+	    <option value="00f">Blue</option>
+	    <option value="000">Black</option>
+	    <option value="fff">White</option>
+	  </select> 
+	<br>
+	<br>
+	<img id="qr_code" style="color:White;background-color:White;border-color:White;border-width:0px;border-style:None;height:150px;width:150px;" download>
+	<br>
+	<br>
+
+
+
+
+
+	<script type="text/javascript">
+		function qr_codecreator(){
+			color = document.getElementById("color").value
+			bgcolor = document.getElementById("bgcolor").value
+			qr_data = document.getElementById("qr_data").value
+			document.getElementById("qr_code").src ="https://api.qrserver.com/v1/create-qr-code/?data=" + qr_data + "&amp;size=150x150&color=" + color + "&bgcolor=" + bgcolor	
+			document.getElementById("qr_download").href = src="https://api.qrserver.com/v1/create-qr-code/?data=" + qr_data + "&amp;size=200x200&color=" + color + "&bgcolor=" + bgcolor
+			document.getElementById("qr_code").display = "block"		
+		}
+	</script>
+
+
+<form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="post" enableviewstate="True">
+	<label>Choose QR code image to read:</label>
+	<input name="file" type="file">
+	<br> 
+	<input type="submit" value="Read QR code">
+
+	<script>
+	  function myFunction() {
+	  var x = document.getElementById("file");
+	  x.disabled = true;
+	  }
+	</script>
+	    </form>
+
+
+</body>
+</html>
